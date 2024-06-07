@@ -1,0 +1,63 @@
+import { useEffect , useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import '../styles/ShipDetail.css'
+import defaultImage from '../assets/image.png'
+
+const ShipDetail = () => {
+    const { shipId } = useParams();
+    const [ship , setShip] = useState(null);
+    const [loading ,setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+
+    useEffect(() => {
+        const fetchShip = async () => {
+          try {
+            const response = await axios.get(`https://swapi.dev/api/starships/${shipId}/`);
+            setShip(response.data);
+          } catch (err) {
+            setError(err.message);
+          } finally {
+            setLoading(false);
+          }
+        };
+
+        fetchShip();
+    }, [shipId]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+      }
+    
+      if (error) {
+        return <div>Error: {error}</div>;
+      }
+    
+      const imageUrl = `https://starwars-visualguide.com/assets/img/starships/${shipId}.jpg`;
+
+      
+  return (
+    <div className="ship-detail">
+      <h2>{ship.name}</h2>
+      <img
+        src={imageUrl}
+        alt={ship.name}
+        onError={(e) => e.target.src = defaultImage} 
+        style={{ maxWidth: '50%', height: 'auto' }}
+      />
+      <p>Model: {ship.model}</p>
+      <p>Manufacturer: {ship.manufacturer}</p>
+      <p>Cost: {ship.cost_in_credits} credits</p>
+      <p>Length: {ship.length} meters</p>
+      <p>Crew: {ship.crew}</p>
+      <p>Passengers: {ship.passengers}</p>
+      <p>Max Speed: {ship.max_atmosphering_speed}</p>
+      <p>Hyperdrive Rating: {ship.hyperdrive_rating}</p>
+      <p>Cargo Capacity: {ship.cargo_capacity}</p>
+      <p>Consumables: {ship.consumables}</p>
+    </div>
+  );
+};
+
+export default ShipDetail;
