@@ -53,6 +53,21 @@ body {
 .App-header .login-signup a:hover {
   text-decoration: underline;
 }
+.App-header .login-signup {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.App-header .login-signup a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.App-header .login-signup a:hover {
+  text-decoration: underline;
+}
 
 .ship-list {
   padding: 20px;
