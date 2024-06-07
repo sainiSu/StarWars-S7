@@ -3,6 +3,8 @@ import './App.css';
 import ShipDetail from './components/ShipDetail';
 import { ShipProvider } from './ShipContext';
 import HomePage from './components/HomePage';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 //for social icons import all the images form the folder
 
@@ -57,6 +59,8 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/starships" element={<ShipList />} />
               <Route path="/starships/:shipId" element={<ShipDetail />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
             </Routes>
           </ShipProvider>
         </main>
