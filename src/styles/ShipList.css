@@ -29,3 +29,18 @@
 .ship-item p {
   margin: 5px 0;
 }
+
+.load-more {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bolder;
+}
+
+.load-more:hover {
+  background-color: #333;
+}

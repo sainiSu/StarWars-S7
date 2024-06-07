@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'; import ShipList from './components/ShipList';
 import './App.css';
 import ShipDetail from './components/ShipDetail';
+import { ShipProvider } from './ShipContext';
 
 function App() {
   return (
@@ -20,10 +21,12 @@ function App() {
           </div>
         </header>
         <main>
+          <ShipProvider>
           <Routes>
             <Route path="/starships" element={<ShipList />} />
             <Route path="/starships/:shipId" element={<ShipDetail />} />
           </Routes>
+          </ShipProvider>
         </main>
       </div>
     </Router>
