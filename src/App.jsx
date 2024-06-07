@@ -4,6 +4,14 @@ import ShipDetail from './components/ShipDetail';
 import { ShipProvider } from './ShipContext';
 import HomePage from './components/HomePage';
 
+//for social icons import all the images form the folder
+
+import tiktokIcon from './social/tic.png';
+import twitterIcon from './social/twitter1.png';
+import instagramIcon from './social/inst.png';
+import facebookIcon from './social/fb.png';
+import whatsappIcon from './social/whtsup.png';
+import youtubeIcon from './social/you-tube.png';
 
 function App() {
   return (
@@ -16,6 +24,27 @@ function App() {
             <Link to="/">Home</Link>
             <Link to="/starships" className="starships-link"> Starships</Link>
           </nav>
+
+          <div className="social-media">
+            <a href='https://www.tiktok.com/login?lang=es&redirect_url=https%3A%2F%2Fwww.tiktok.com%2Fupload%3Flang%3Des' target="_blank">
+              <img src={tiktokIcon} alt="TikTok" />
+            </a>
+            <a href='https://x.com/' target="_blank">
+              <img src={twitterIcon} alt="Twitter" />
+            </a>
+            <a href='https://www.instagram.com/' target="_blank">
+              <img src={instagramIcon} alt="Instagram" />
+            </a>
+            <a href='https://www.facebook.com/?locale=es_ES/' target="_blank">
+              <img src={facebookIcon} alt="Facebook" />
+            </a>
+            <a href='https://www.whatsapp.com/?lang=es_LA' target="_blank">
+              <img src={whatsappIcon} alt="WhatsApp" />
+            </a>
+            <a href='https://www.youtube.com/' target="_blank">
+              <img src={youtubeIcon} alt="YouTube" />
+            </a>
+          </div>
 
           <div className="login-signup">
             <Link to="/login">Log In</Link>

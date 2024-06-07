@@ -76,3 +76,21 @@ body {
   font-size: 1em;
   margin: 5px 0 0;
 }
+
+.social-media {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.social-media img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s;
+}
+
+.social-media img:hover {
+  transform: scale(1.1);
+}
