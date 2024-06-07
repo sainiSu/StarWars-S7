@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import ShipDetail from './components/ShipDetail';
 import { ShipProvider } from './ShipContext';
+import HomePage from './components/HomePage';
+
 
 function App() {
   return (
@@ -22,10 +24,11 @@ function App() {
         </header>
         <main>
           <ShipProvider>
-          <Routes>
-            <Route path="/starships" element={<ShipList />} />
-            <Route path="/starships/:shipId" element={<ShipDetail />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/starships" element={<ShipList />} />
+              <Route path="/starships/:shipId" element={<ShipDetail />} />
+            </Routes>
           </ShipProvider>
         </main>
       </div>

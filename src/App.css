@@ -39,11 +39,19 @@ body {
   margin: 0 10px;
 }
 
+.App-header nav a:hover {
+  border-bottom: 2px solid #fff;
+}
+
 .App-header .login-signup {
   position: absolute;
   top: 20px;
   right: 20px;
   gap: 10px;
+}
+
+.App-header .login-signup a:hover {
+  text-decoration: underline;
 }
 
 .ship-list {
@@ -57,4 +65,14 @@ body {
   border-radius: 5px;
   background-color: #222;
   color: #fff;
+}
+
+.ship-item h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.ship-item p {
+  font-size: 1em;
+  margin: 5px 0 0;
 }
