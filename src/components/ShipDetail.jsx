@@ -3,12 +3,23 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import '../styles/ShipDetail.css'
 import defaultImage from '../assets/image.png'
+import defaultPilotImage from '../assets/pilott.jpg'
 
 const ShipDetail = () => {
     const { shipId } = useParams();
     const [ship , setShip] = useState(null);
+
+    //for more ships
+    
     const [loading ,setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    // to get the info of pilots
+
+    const [pilots, setPilots] = useState([]);
+    //const [films, setFilms] = useState([]);
+
+
 
 
     useEffect(() => {
@@ -16,6 +27,8 @@ const ShipDetail = () => {
           try {
             const response = await axios.get(`https://swapi.dev/api/starships/${shipId}/`);
             setShip(response.data);
+            const pilotResponses = await Promise.all(response.data.pilots.map((url) => axios.get(url)));
+            setPilots(pilotResponses.map((res) => res.data));
           } catch (err) {
             setError(err.message);
           } finally {
@@ -38,6 +51,7 @@ const ShipDetail = () => {
 
       
   return (
+    <div>
     <div className="ship-detail">
       <h2>{ship.name}</h2>
       <img
@@ -56,6 +70,22 @@ const ShipDetail = () => {
       <p>Hyperdrive Rating: {ship.hyperdrive_rating}</p>
       <p>Cargo Capacity: {ship.cargo_capacity}</p>
       <p>Consumables: {ship.consumables}</p>
+    </div>
+
+    <div className="ship-pilots">
+      <h2>Pilots</h2>
+      <div className="pilot-list">
+        {pilots.map((pilot , index) =>(
+          <div key = { index } className='pilot-item'>
+            
+          <img src={`https://starwars-visualguide.com/assets/img/characters/${pilot.url.split('/')[5]}.jpg`} onError={(e) => e.target.src = defaultPilotImage}   style={{ maxWidth: '50%', height: 'auto' }}/>           
+            <p>{pilot.name}</p>
+            </div>
+        ))}
+      </div>
+
+
+    </div>
     </div>
   );
 };

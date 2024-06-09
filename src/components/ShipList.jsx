@@ -4,7 +4,7 @@ import '../styles/ShipList.css';
 
 
 const ShipList = () => {
-  const { ships, loading, error, setPage, hasMore } = useShips();
+  const { ships, error, setPage, hasMore } = useShips();
 
   const handleLoadMore = () => {
     setPage(prevPage => prevPage + 1);
@@ -15,9 +15,8 @@ const ShipList = () => {
       {ships.map((ship) => (
         <ShipItem key={ship.name} name={ship.name} model={ship.model} url={ship.url} />
       ))}
-      {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
-      {hasMore && !loading && (
+      {hasMore && (
       <button onClick={handleLoadMore} className="load-more">
           View More
         </button>

@@ -16,3 +16,22 @@
     font-family: 'Courier New', Courier ;
     font-weight: bolder;
 }
+
+.ship-pilots {
+    margin-top: 5px;
+    color: #fff;
+    font-family: 'Courier New', Courier ;
+    font-weight: bolder;
+    padding: 20px;
+  }
+  
+  .pilot-list {
+    display: flex;
+    gap: 5px;
+    background-color: #fff;
+    color: black;
+  }
+  
+  .pilot-item {
+    text-align: center;
+  }
