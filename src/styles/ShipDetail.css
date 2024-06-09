@@ -7,7 +7,7 @@
     color: black;
 }
 
-.ship-dtail h2{
+.ship-detail h2{
     margin-bottom: 20px;
 }
 
@@ -17,21 +17,26 @@
     font-weight: bolder;
 }
 
-.ship-pilots {
+.ship-pilots, .ship-films {
     margin-top: 5px;
     color: #fff;
     font-family: 'Courier New', Courier ;
     font-weight: bolder;
     padding: 20px;
   }
+
+  .ship-pilots h2, .ship-films h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
   
-  .pilot-list {
+  .pilot-list, .film-list {
     display: flex;
     gap: 5px;
     background-color: #fff;
     color: black;
   }
   
-  .pilot-item {
+  .pilot-item, .film-item {
     text-align: center;
   }

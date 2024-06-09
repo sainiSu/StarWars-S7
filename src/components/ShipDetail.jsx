@@ -17,7 +17,7 @@ const ShipDetail = () => {
     // to get the info of pilots
 
     const [pilots, setPilots] = useState([]);
-    //const [films, setFilms] = useState([]);
+    const [films, setFilms] = useState([]);
 
 
 
@@ -29,6 +29,9 @@ const ShipDetail = () => {
             setShip(response.data);
             const pilotResponses = await Promise.all(response.data.pilots.map((url) => axios.get(url)));
             setPilots(pilotResponses.map((res) => res.data));
+            setPilots(pilotResponses.map((res) => res.data));
+            const filmResponses = await Promise.all(response.data.films.map((url) => axios.get(url)));
+            setFilms(filmResponses.map((res) => res.data));
           } catch (err) {
             setError(err.message);
           } finally {
@@ -83,9 +86,19 @@ const ShipDetail = () => {
             </div>
         ))}
       </div>
-
-
     </div>
+    <div className="ship-films">
+        <h2>Films</h2>
+        <div className="film-list">
+          {films.map((film, index) => (
+            <div key={index} className="film-item">
+              <img src='https://starwars-visualguide.com/#/films?page=1'/>
+               <p>{film.title}</p>
+              <p>Episode {film.episode_id}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
