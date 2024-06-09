@@ -1,10 +1,15 @@
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'; import ShipList from './components/ShipList';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import ShipList from './components/ShipList';
 import './App.css';
 import ShipDetail from './components/ShipDetail';
+//import PrivateRoute from './components/PrivateRoute';
 import { ShipProvider } from './ShipContext';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import { useAuth } from './hooks/useAuth'
+import { auth } from './firebaseConfig';
+
 
 //for social icons import all the images form the folder
 
@@ -16,6 +21,18 @@ import whatsappIcon from './social/whtsup.png';
 import youtubeIcon from './social/you-tube.png';
 
 function App() {
+  const { user} = useAuth();
+
+
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+  
+
   return (
     <Router>
       <div className="App">
@@ -24,7 +41,7 @@ function App() {
 
           <nav>
             <Link to="/">Home</Link>
-            <Link to="/starships" className="starships-link"> Starships</Link>
+            {user && <Link to="/starships" className="starships-link"> Starships</Link>}
           </nav>
 
           <div className="social-media">
@@ -49,8 +66,10 @@ function App() {
           </div>
 
           <div className="login-signup">
-            <Link to="/login">Log In</Link>
-            <Link to="/signup">Sign Up</Link>
+
+            {!user && <Link to="/login">Log In</Link>}
+            {!user && <Link to="/signup">Sign Up</Link>}
+            {user && <button className='logout'onClick={handleSignOut}>Log Out</button>}
           </div>
         </header>
         <main>

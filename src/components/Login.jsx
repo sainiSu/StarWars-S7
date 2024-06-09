@@ -2,17 +2,21 @@ import { useState } from 'react';
 import { auth } from '../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import '../styles/Auth.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate('/starships');
     } catch (err) {
+      console.error('Error during sign in:', err);
       setError(err.message);
     }
   };
