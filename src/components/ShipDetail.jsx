@@ -92,7 +92,7 @@ const ShipDetail = () => {
         <div className="film-list">
           {films.map((film, index) => (
             <div key={index} className="film-item">
-              <img src='https://starwars-visualguide.com/#/films?page=1'/>
+              <img src={`https://starwars-visualguide.com/assets/img/films/${film.url.split('/')[5]}.jpg`}/>
                <p>{film.title}</p>
               <p>Episode {film.episode_id}</p>
             </div>
