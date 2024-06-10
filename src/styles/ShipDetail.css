@@ -1,42 +1,65 @@
 .ship-detail {
-    text-align: center;
-    margin:0;
-    padding: 20px;
-    border: 1px solid whitesmoke;
-    background-color: aliceblue;
-    color: black;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid whitesmoke;
+  color: white;
+  display: flex;
+  align-items: flex-start;
 }
 
-.ship-detail h2{
-    margin-bottom: 20px;
+
+.ship-detail h2 {
+  margin-bottom: 20px;
 }
 
 .ship-detail p {
-    margin:10px;
-    font-family: 'Courier New', Courier ;
-    font-weight: bolder;
+  margin: 10px;
+  font-family: 'Courier New', Courier;
+  font-weight: bolder;
 }
 
-.ship-pilots, .ship-films {
-    margin-top: 5px;
-    color: #fff;
-    font-family: 'Courier New', Courier ;
-    font-weight: bolder;
-    padding: 20px;
-  }
+.ship-image {
+  width: 500px;
+  height: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
-  .ship-pilots h2, .ship-films h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-  
-  .pilot-list, .film-list {
-    display: flex;
-    gap: 5px;
-    background-color: #fff;
-    color: black;
-  }
-  
-  .pilot-item, .film-item {
-    text-align: center;
-  }
+.ship-info {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.ship-info h2 {
+  margin-top: 0;
+}
+
+.ship-pilots,
+.ship-films {
+  color: #fff;
+  font-family: 'Courier New', Courier;
+  font-weight: bolder;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.pilot-list, .film-list {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.ship-pilots h2,
+.ship-films h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.pilot-item, .film-item {
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+}
